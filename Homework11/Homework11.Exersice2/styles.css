@@ -1,0 +1,26 @@
+table {
+	border-spacing: 2px;
+	border-collapse: separate;
+	border: 1px solid black;
+}
+tr {
+	font-weight: bold;
+	padding: 5px;
+	background: #efefef;
+	border: 1px solid #dddddd;
+}
+td {
+    height: 30px;
+    width: 30px;
+	border: 1px solid black;
+	text-align: center;
+}
+
+.white {
+    background-color: white;
+}
+
+.black {
+    background-color: black;
+}
+
