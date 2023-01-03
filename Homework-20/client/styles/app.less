@@ -1,0 +1,320 @@
+@import "reset";
+
+@grey: #bbbaba;
+@green: #38ac38;
+
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: sans-serif !important;
+}
+
+body {
+  min-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  overflow-x:hidden; 
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header-container,
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 56px;
+  background: rgb(41, 130, 115);
+}
+
+.header-container {
+  border-radius: 0 0 20px 20px;
+  width: 700px;
+}
+
+.footer-container {
+  border-radius: 20px 20px 0 0;
+  width: 700px;
+}
+
+.header__link,
+.footer__info {
+  color: @grey;
+}
+
+.header__link {
+  margin: 0 20px;
+  transition: all .2s;
+
+  &:hover,
+  &.active {
+    color: white;
+  }
+}
+
+.content-container {
+  flex: 1;
+  padding: 50px;
+}
+
+.page-title {
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 3.5vw;
+}
+
+.button {
+	min-width: 130px;
+	position: relative;
+	display: inline-block;
+	text-align: center;
+	text-transform: uppercase; 
+	padding: 15px;
+	margin: 30px 25px;
+	font-weight: 600;
+	color: white;
+	transition: 0.5s;
+}
+
+.button { 
+  background-color: rgb(41, 130, 115); 
+}
+
+.button:before {
+	position: absolute;
+	content:"";
+	border-top: 5px solid lighten(rgb(41, 130, 115), 5%);
+	border-left: 5px solid lighten(rgb(41, 130, 115), 5%);	
+	border-right: 5px solid darken(rgb(41, 130, 115), 5%);
+	border-bottom: 5px solid darken(rgb(41, 130, 115), 5%);
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;	
+  transition: 0.5s;
+
+}
+
+.button:hover {
+	box-shadow: 7px 7px darken(rgb(41, 130, 115), 20%), -7px -7px lighten(rgb(41, 130, 115), 20%);
+	cursor: pointer;
+		&::before {
+		border: 0px ;
+	}
+}
+
+.about {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 830px;
+  text-align: center;
+
+  &__info {
+    font-size: 1.75vw;
+    line-height: 34px;
+    margin-bottom: 25px;
+  }
+
+  &__btn-start {
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+}
+
+.lesson-add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__day,
+  &__title,
+  &__description {
+    width: 300px;
+    border: solid black 1px;
+    margin: 10px 0 10px 0;
+    border-radius: 4px;
+    outline: none;
+  }
+
+  &__day,
+  &__title {
+    height: 30px;
+    padding: 0 8px;
+  }
+
+  &__description {
+    height: 60px;
+    padding: 5px 8px;
+    resize: none;
+    margin: 10px 0;
+  }
+
+  &__btn-add {
+    padding: 8px 24px;
+    font-size: 14px;
+  }
+}
+
+.lessons {
+  max-width: 600px;
+  margin: 30px auto 0;
+
+  &__additional {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  &__counter {
+    font-weight: bold;
+    text-align: center;
+
+    &-done {
+      color: @green;
+    }
+
+    &-total {
+      color: red;
+    }
+  }
+
+  &__btn-clear {
+    padding: 8px 16px;
+  }
+
+  .lesson {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 10px;
+    border: solid black 1px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all .3s;
+
+    &:hover {
+      background: rgb(19, 67, 52);
+      border-color: white;
+
+      & > .lesson__title {
+        color: white;
+      }
+
+      & > .lesson__buttons .button {
+        background: white;
+        color: black;
+      }
+    }
+
+    &__title {
+      max-width: 400px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 1px 0;
+      transition: all .3s;
+    }
+
+    &__buttons {
+      width: 175px;
+      display: flex;
+      justify-content: flex-end;
+
+      .button {
+        padding: 4px 12px;
+        font-size: 12px;
+        margin: 0 2px;
+      }
+    }
+
+    &_done {
+      background: @green;
+
+      &:hover {
+        background: #156615;
+      }
+    }
+  }
+}
+
+.lesson-info,
+.lesson-edit {
+  line-height: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__buttons {
+    margin-top: 10px;
+
+    .button {
+      padding: 6px 14px;
+      font-size: 12px;
+    }
+  }
+}
+
+.lesson-edit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  b {
+    vertical-align: top;
+  }
+
+  &__day,
+  &__title,
+  &__description {
+    width: 300px;
+    border: solid black 1px;
+    margin: 10px 0 10px 0;
+    border-radius: 4px;
+    outline: none;
+  }
+
+  &__day,
+  &__title {
+    width: 230px;
+  }
+
+  &__description {
+    width: 175px;
+    height: 60px;
+    margin-top: 3px;
+    resize: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    overflow-x:scroll; 
+  }
+
+  .lesson-add {
+
+    margin: auto;
+
+    &__day,
+    &__title,
+    &__description {
+      width: 200px;
+    }
+  }
+
+  .lessons__list {
+    margin: auto;
+    width: 300px;
+  }
+  
+}
+
